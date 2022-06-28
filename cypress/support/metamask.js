@@ -306,9 +306,9 @@ module.exports = {
     }
 
     await puppeteer.waitAndClick(addNetworkPageElements.saveButton);
-    await puppeteer.waitAndClick(settingsPageElements.closeButton);
 
     setNetwork(network);
+    console.log(`Wait for network`)
 
     await puppeteer.waitForText(
       mainPageElements.networkSwitcher.networkName,

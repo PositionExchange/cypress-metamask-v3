@@ -44,6 +44,8 @@ module.exports = {
         mainWindow = page;
       } else if (page.url().includes('extension')) {
         metamaskWindow = page;
+      } else if (page.url().includes('e2e')) {
+        mainWindow = page;
       }
     }
     return true;
@@ -142,8 +144,7 @@ module.exports = {
   waitAndGetValue: async (selector, page = metamaskWindow) => {
     await module.exports.waitFor(selector, page);
     const element = await page.$(selector);
-    const property = await element.getProperty('value');
-    const value = await property.jsonValue();
+    const value = await page.evaluate(el => el.textContent, element)
     return value;
   },
   waitAndSetValue: async (text, selector, page = metamaskWindow) => {

@@ -33,8 +33,9 @@
     "axios": "^0.26.1",
     "bytes32": "0.0.3",
     "cross-zip": "^4.0.0",
-    "cypress": "^9.5.3",
-    "dotenv": "^16.0.0",
+    "cypress": "^10.2.0",
+    "cypress-wait-until": "^1.7.2",
+    "dotenv": "^16.0.1",
     "eslint-plugin-cypress": "^2.11.3",
     "ethers": "^5.1.4",
     "node-fetch": "^2.6.1",
@@ -43,8 +44,7 @@
     "standard": "^16.0.3",
     "start-server-and-test": "^1.12.2",
     "superstatic": "^7.1.0",
-    "synthetix-js": "^2.66.0",
-    "cypress-wait-until": "^1.7.2"
+    "synthetix-js": "^2.66.0"
   },
   "repository": {
     "type": "git",
