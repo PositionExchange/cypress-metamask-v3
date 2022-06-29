@@ -1,6 +1,6 @@
 {
   "name": "@positionex/cypress-metamask-v3",
-  "version": "1.6.15",
+  "version": "1.6.16",
   "main": "cypress/support/commands.js",
   "license": "MIT",
   "keywords": [
