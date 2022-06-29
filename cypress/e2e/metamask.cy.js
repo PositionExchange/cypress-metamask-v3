@@ -11,17 +11,19 @@ describe('Metamask', () => {
       });
     });
     it(`acceptMetamaskAccess should accept connection request to metamask`, () => {
-      cy.visit('https://position.exchange');
+      cy.visit('https://futures.position.exchange');
+      cy.contains('Start Trading').click();
       cy.contains('Connect Wallet').click();
       cy.contains('Metamask').click();
       cy.acceptMetamaskAccess().then(connected => {
         expect(connected).to.be.true;
       });
-      cy.get('#network').contains('42');
-      cy.get('#chainId').contains('0x2a');
-      cy.get('#accounts').contains(
-        '0x352e559b06e9c6c72edbf5af2bf52c61f088db71',
-      );
+      const approveElm = cy.contains('Approve')
+      if(approveElm){
+        approveElm.click()
+        cy.confirmMetamaskTransaction()
+      }
+      
     });
     it(`getNetwork should return network by default`, () => {
       cy.getNetwork().then(network => {

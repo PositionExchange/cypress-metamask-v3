@@ -5,6 +5,10 @@ const networkSwitcher = {
   networkButton: number => `.dropdown-menu-item:nth-child(${1 + number})`,
 };
 
+const account = {
+  clickable: '.selected-account__clickable'
+}
+
 const walletOverview = '.wallet-overview';
 const popup = {
   container: '.popover-container',
@@ -65,4 +69,5 @@ module.exports.mainPageElements = {
   accountModal,
   importAccount,
   createAccount,
+  account
 };

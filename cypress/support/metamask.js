@@ -452,6 +452,7 @@ module.exports = {
   },
   acceptAccess: async allAccounts => {
     const notificationPage = await puppeteer.switchToMetamaskNotification();
+    if(!notificationPage) return true
     if (allAccounts === true) {
       await puppeteer.waitAndClick(
         notificationPageElements.selectAllCheck,
@@ -487,11 +488,12 @@ module.exports = {
         notificationPage,
       );
     } else {
-      await puppeteer.waitAndClick(
-        confirmPageElements.gasFeeArrowUpButton,
-        notificationPage,
-        10,
-      );
+      console.log(`Wait for gasFeeArrowUpButton`)
+      // await puppeteer.waitAndClick(
+      //   confirmPageElements.gasFeeArrowUpButton,
+      //   notificationPage,
+      //   10,
+      // );
     }
 
     if (gasConfig && gasConfig.gasLimit) {
@@ -502,10 +504,12 @@ module.exports = {
       );
     }
     // metamask reloads popup after changing a fee, you have to wait for this event otherwise transaction will fail
-    await puppeteer.metamaskWindow().waitForTimeout(3000);
-    await notificationPage.waitForFunction(
-      `document.querySelector('${confirmPageElements.gasLimitInput}').value != "0"`,
-    );
+    // await puppeteer.metamaskWindow().waitForTimeout(3000);
+    // console.log(`Wait for gas limit`)
+    // await notificationPage.waitForFunction(
+    //   `document.querySelector('${confirmPageElements.gasLimitInput}').value != "0"`,
+    // );
+    console.log(`Wait for gas done, clicking confirm`)
     await puppeteer.waitAndClick(
       confirmPageElements.confirmButton,
       notificationPage,
@@ -628,6 +632,9 @@ module.exports = {
       (await puppeteer.metamaskWindow().$(unlockPageElements.unlockPage)) ===
       null
     ) {
+      if( (await puppeteer.metamaskWindow().$(mainPageElements.account.clickable)) !== null){
+        return true;
+      }
       await module.exports.confirmWelcomePage();
       if (secretWordsOrPrivateKey.includes(' ')) {
         // secret words

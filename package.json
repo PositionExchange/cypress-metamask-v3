@@ -1,6 +1,6 @@
 {
-  "name": "cypress-metamask-v2",
-  "version": "1.6.10",
+  "name": "@positionex/cypress-metamask-v3",
+  "version": "1.6.15",
   "main": "cypress/support/commands.js",
   "license": "MIT",
   "keywords": [
@@ -48,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saxenashivang/cypress-metamask-v2.git"
+    "url": "git+https://github.com/PositionExchange/cypress-metamask-v3.git"
   },
   "description": "Interacting with you MetaMask made \"easy\". (Depending on how you define \"easy\" of course...)",
   "bugs": {
